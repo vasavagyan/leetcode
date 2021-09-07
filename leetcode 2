@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int reverse(int x) {
+        if(x >= -2147483648 && x<=2147483648){  //checking bad input
+            long long sol = 0;
+            while(x){
+                sol = sol*10 + x%10;   //reversing given x number
+                x /= 10;
+            }
+            if(sol >= -2147483648 && sol <= 2147483648){  //checking int overflow
+                return sol;
+            }else{
+                return 0;
+            }
+        }
+        else{
+            return 0;
+        }
+    }
+};
