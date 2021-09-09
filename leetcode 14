@@ -1,0 +1,40 @@
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if(strs.size()==1){          //if there is only 1 element
+            return strs[0];
+        }
+        if(strs[0]==""){             //if one of the elements is empty string
+            return "";
+        }
+        
+        string sol;
+        int prefix_counter = 0;
+        bool equality_flag = false;
+        
+        for(int i=0; i<strs[0].size(); ++i){         //rolling first string's size's times
+            for(int j=0; j<strs.size()-1; ++j){
+                if(strs[j][i] == strs[j+1][i]){
+                    equality_flag = true;
+                }else{
+                    equality_flag = false;
+                    break;
+                }
+            }
+            
+            if(equality_flag){
+                prefix_counter++;
+            }else{
+                break;
+            }
+        }
+        if(prefix_counter){
+            for(int i=0; i<prefix_counter; ++i){
+                sol+=strs[0][i];
+            }
+            return sol;
+        }else{
+            return "";
+        }
+    }
+};
