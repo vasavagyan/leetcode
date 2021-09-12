@@ -1,0 +1,34 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        if(digits[digits.size()-1] != 9){       //yete verjin tiv@ 9 chi sax hesht a, xosqi 12678
+            digits[digits.size()-1] += 1;
+            return digits;
+        }
+        int count=0;                           //stexic a kashan sksum
+        int i = digits.size()-1;
+        
+        while(i>=0 and digits[i] == 9){       //hashvum enq te verjin qani tivn a 9
+            ++count;
+            --i;
+        }
+        
+        if(count == digits.size()){         //en depqn a erb bolor tver@ 9 a, xosqi 99999
+            digits[0]=1;
+            for(int i=1; i<digits.size(); ++i){
+                digits[i]=0;
+            }
+            digits.push_back(0);
+            return digits;
+        }
+        
+        i = digits.size()-1;               //es el en depqn a erb verjic voch bolorn en 9, xosqi 12999
+        for(int j=0; j<count; ++j){
+            digits[i]=0;
+            --i;
+        }
+        digits[digits.size()-count-1] +=1;
+        
+        return digits;
+    }
+};
