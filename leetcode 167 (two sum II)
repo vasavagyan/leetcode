@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+
+        vector<int> sol;
+        if(numbers.size()==2){
+            sol.push_back(1);
+            sol.push_back(2);
+            return sol;
+        }
+        auto left = numbers.begin();
+        auto right = std::prev(numbers.end());
+        
+        while(*left <= *right){
+            if((*left + *right) > target){
+                right = std::prev(right);
+            }else if((*left + *right) < target){
+                left = std::next(left, 1);
+            }else{
+                sol.push_back(std::distance(numbers.begin(), left)+1);
+                sol.push_back((std::distance(numbers.begin(), right))+1);
+                return sol;
+            }
+        }
+        return sol;
+    }
+};
