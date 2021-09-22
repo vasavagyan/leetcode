@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if(s.size()<=1){
+            return s.size();
+        }
+        
+        int count=1;
+        int tmpCount=1;
+        int uniqueIndex=0;
+        
+        for(int i=0; i<s.size()-1; ++i){
+            int fixIndex=i+1;
+            int index=i;
+            while(index>=uniqueIndex){
+                if(s[fixIndex] != s[index]){
+                    index--;
+                    tmpCount++;
+                }else{
+                    uniqueIndex=index+1;
+                    break;
+                }
+            }
+            if(tmpCount>count){
+                count = tmpCount;
+            }
+            tmpCount=1;
+        }
+        
+        return count;
+    }
+};
