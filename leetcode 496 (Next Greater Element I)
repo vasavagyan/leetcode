@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> sol;
+        
+        for (int i = 0; i < nums1.size(); ++i) {
+            auto it = std::find(nums2.begin(), nums2.end(), nums1[i]);
+            for ( ; it != nums2.end(); ++it) {
+                if (*it > nums1[i]) {
+                    sol.push_back(*it);
+                    break;
+                }
+            }
+            if (sol.size() <= i) {
+                sol.push_back(-1);
+            }
+        }
+        return sol;
+    }
+};
