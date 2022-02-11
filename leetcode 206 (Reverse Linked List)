@@ -10,7 +10,8 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverseList(ListNode* head)
+    {
         if(head == nullptr || head->next==nullptr){
             return head;
         }
@@ -19,17 +20,13 @@ public:
         ListNode* nextNode = head;
         ListNode* tmpNode = head;
         
-        while(tmpNode->next != nullptr){
+        while(tmpNode){
             nextNode = tmpNode->next;
             tmpNode->next = prevNode;
             prevNode = tmpNode;
             tmpNode = nextNode;
         }
         
-        nextNode = tmpNode->next;
-        tmpNode->next = prevNode;
-        prevNode = tmpNode;
-        tmpNode = nextNode;
         head = prevNode;
         
         return head;   
