@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int hammingWeight(uint32_t n)
+    {
+        if (!n) return 0;
+        
+        int count = 0;
+        int cmp = 1;
+        
+        for (int i = 0; i < 32; ++i)
+        {
+            if (n & (cmp << i))
+            {
+                ++count;
+            }
+        }
+        return count;
+    }
+};
