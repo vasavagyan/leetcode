@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums)
+    {
+        set<int> sol;
+        bool thereWas = false;
+        
+        for (auto it : nums)
+        {
+            if (sol.emplace(it).second == false)
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+};
