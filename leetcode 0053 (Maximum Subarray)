@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums)
+    {
+        if (nums.size() == 1)
+            return nums[0];
+        
+        int sol = nums[0];
+        int sum = 0;
+        
+        for (auto elem : nums)
+        {
+            sum += elem;
+            
+            if (elem > sum)
+            {
+                sum = elem;
+            }
+            
+            sol = (sum > sol) ? sum : sol;
+        }
+        
+        return sol;
+    }
+};
