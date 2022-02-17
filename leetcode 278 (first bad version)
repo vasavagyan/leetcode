@@ -3,11 +3,15 @@
 
 class Solution {
 public:
-    int firstBadVersion(int n) {
-        while(isBadVersion(n)==true){
+    int firstBadVersion(int n)
+    {
+        while (isBadVersion(n) == true)
+        {
                 n/=2;
         }
-        while(isBadVersion(n)==false){
+        
+        while (isBadVersion(n) == false)
+        {
             ++n;
         }
         return n;
