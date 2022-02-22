@@ -11,12 +11,12 @@ public:
         
         for (int i = 0; i < s.size() - 1; ++i)
         {
-            int fixIndex = i + 1;
+            int nextIndex = i + 1;
             int index = i;
             
             while (index >= uniqueIndex)
             {
-                if (s[fixIndex] != s[index])
+                if (s[nextIndex] != s[index])
                 {
                     index--;
                     tmpCount++;
