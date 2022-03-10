@@ -1,0 +1,42 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        while (a.size() < b.size()) {
+            a = '0' + a;
+        }
+        while (a.size() > b.size()) {
+            b = '0' + b;
+        }
+
+        string sol;
+        char carry = '0';
+        
+        for (int i = a.size() - 1; i >= 0; --i) {
+            if (carry == '0') {
+                if (a[i] == '1' && b[i] == '1') {
+                    sol = '0' + sol;
+                    carry = '1';
+                } else if (a[i] == '1' || b[i] == '1') {
+                    sol = '1' + sol;
+                } else {
+                    sol = '0' + sol;
+                }
+            } else {
+                if (a[i] == '1' && b[i] == '1') {
+                    sol = '1' + sol;
+                } else if (a[i] == '1' || b[i] == '1') {
+                    sol = '0' + sol;
+                } else {
+                    sol = '1' + sol;
+                    carry = '0';
+                }
+            }
+        }
+        
+        if (carry == '1') {
+            sol = '1' + sol;
+        }
+        
+        return sol;
+    }
+};
